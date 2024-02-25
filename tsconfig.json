@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "@loopback/build/config/tsconfig.common.json",
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "target": "es2018",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "rootDir": "src",
+    "inlineSources": true,
+    "sourceMap": true,
+    "lib": [
+      "dom"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
+  },
+  "assets": ["**/*.conf"],
+  "include": ["./", "src", "src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
