@@ -2,34 +2,22 @@ import {Entity, hasOne, model, property} from "@loopback/repository";
 import {UserCredentials} from "@/models/user-credentials.model";
 
 @model({
-  settings: {
-    strict: false,
-  },
+  settings: { postgresql: { schema: 'ph_qa_manager', table: 'user' }}
 })
 export class User extends Entity {
-  // must keep it
-  // add id:string<UUID>
   @property({
-    type: 'string',
+    type: 'number',
     id: true,
     generated: false,
-    defaultFn: 'uuidv4',
+    postgresql: {columnName: 'id', dataType: 'serial', nullable: 'NO'},
   })
-  id: string;
+  id: number;
 
   @property({
     type: 'string',
   })
-  realm?: string;
+  username: string;
 
-  // must keep it
-  @property({
-    type: 'string',
-  })
-  username?: string;
-
-  // must keep it
-  // feat email unique
   @property({
     type: 'string',
     required: true,
@@ -38,16 +26,6 @@ export class User extends Entity {
     },
   })
   email: string;
-
-  @property({
-    type: 'boolean',
-  })
-  emailVerified?: boolean;
-
-  @property({
-    type: 'string',
-  })
-  verificationToken?: string;
 
   @hasOne(() => UserCredentials)
   userCredentials: UserCredentials;

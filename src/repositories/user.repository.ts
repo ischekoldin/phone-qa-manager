@@ -19,7 +19,7 @@ export class UserRepository extends DefaultCrudRepository<
   >;
 
   constructor(
-    @inject(`datasources.receipt`)
+    @inject(`datasources.postgres`)
       dataSource: juggler.DataSource,
     @repository.getter('UserCredentialsRepository')
     protected userCredentialsRepositoryGetter: Getter<UserCredentialsRepository>,

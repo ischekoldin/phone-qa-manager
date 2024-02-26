@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import {AuthenticateFn, AuthenticationBindings} from '@loopback/authentication';
 import {inject} from '@loopback/context';
 import {

@@ -1,26 +1,40 @@
 import {Entity, model, property} from '@loopback/repository';
 
-@model({settings: {strict: false}})
+@model({
+  settings: {
+    postgresql: { schema: 'ph_qa_manager', table: 'user_credentials' },
+    foreignKeys: {
+      fkUserCredentialsUserId: {
+        name: 'fk_user_credentials_user_id',
+        entity: 'User',
+        entityKey: 'id',
+        foreignKey: 'user_id',
+      },
+    },
+  },
+})
 export class UserCredentials extends Entity {
   @property({
     type: 'string',
     id: true,
     generated: false,
-    defaultFn: 'uuidv4',
+    postgresql: {columnName: 'id', nullable: 'NO'},
   })
-  id: string;
+  id?: string;
 
   @property({
     type: 'string',
     required: true,
+    postgresql: {columnName: 'password', nullable: 'NO'},
   })
   password: string;
 
   @property({
-    type: 'string',
+    type: 'number',
     required: true,
+    postgresql: {columnName: 'user_id', nullable: 'NO'},
   })
-  userId: string;
+  userId: number;
 
   // Define well-known properties here
 

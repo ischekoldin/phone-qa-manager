@@ -1,4 +1,3 @@
-/* istanbul ignore file */
 import 'module-alias/register'
 import {ApplicationConfig, PhoneQAManagerApplication} from './application';
 
@@ -12,7 +11,7 @@ export async function main(options: ApplicationConfig = {}) {
   const url = app.restServer.url;
   const env = process.env.NODE_ENV
   console.log(`Server is running at ${url}, ${env} environment`);
-  console.log(`Try ${url}/ping`);
+  console.log(`Try ${url}/explorer to see openApi documentation`);
 
   return app;
 }

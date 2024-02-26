@@ -5,17 +5,17 @@ const config = {
   host: 'localhost',
   port: '5432',
   password: 'postgres',
-  "database": "postgres",
-  "name": "postgres",
-  "user": "postgres",
-  "connector": "postgresql",
+  database: 'postgres',
+  name: 'postgres',
+  user: 'postgres',
+  connector: 'postgresql',
   "debug": true,
 };
 
 @lifeCycleObserver('datasource')
 export class PostgresDataSource extends juggler.DataSource
   implements LifeCycleObserver {
-  static dataSourceName = 'reclpu';
+  static dataSourceName = 'postgres';
   static readonly defaultConfig = config;
 
   constructor(
@@ -25,3 +25,5 @@ export class PostgresDataSource extends juggler.DataSource
     super(dsConfig);
   }
 }
+
+export {config as postgresConfig}
